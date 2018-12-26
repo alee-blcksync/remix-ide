@@ -16,8 +16,7 @@ RUN yum clean all && rpm --rebuilddb && \
     nginx \
     && yum clean all && rm -rf /var/cache/yum
 
-ARG remix_zip
-COPY $remix_zip /tmp/remix-ide.zip
+COPY remix-fa7ec31.zip /tmp/remix-ide.zip
 RUN unzip -oq /tmp/remix-ide.zip -d /usr/share/nginx/html/ && \
     sed -i "/^[^#]*listen.*\[::\]:80 default_server;/ s/.*//" /etc/nginx/nginx.conf && \
     sed -i "/^[^#]*listen.*80 default_server/ s/.*/        listen 8080 default_server;/" /etc/nginx/nginx.conf
